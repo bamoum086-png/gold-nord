@@ -1,6 +1,6 @@
 <!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Gold Nord · Vu dans la météo BFMTV · Estimez votre or depuis chez vous</title><meta name="description" content="Recevez votre kit postal gratuit ou rendez-vous dans l’une de nos agences Gold Nord. Estimation gratuite et sans engagement."><meta name="theme-color" content="#15120e"><style>html,body{margin:0;padding:0;background:#15120e}</style></head><body><!-- ============================================================
   GOLD NORD × BFMTV — Page de campagne « Météo S49 » (M11-goldnord-84)
-  Version : V1.12 · 24/11/2026 · menu Informations légales (RGPD, cookies, LCB-FT, fiscalité, loi, plan du site) · V1.11 : pied de page légal (rachat d’or, RGPD, ©) + bandeau cookies · lingots dans la calculatrice (au tarif 24 carats) · bouton « Estimer mon or » plus visible · calculatrice « Estimer mon or » (tarifs Gold Nord) + menu latéral · demandes → Google Sheets · 15 agences · Metatrend (formulaire réorganisé : 1 = nom, e-mail, téléphone · 2 = adresse, CP + ville ; agences sans statut ouvert/fermé)
+  Version : V1.13 · 24/11/2026 · signature « Conception Meta trend LLC » · V1.12 : menu Informations légales (RGPD, cookies, LCB-FT, fiscalité, loi, plan du site) · V1.11 : pied de page légal (rachat d’or, RGPD, ©) + bandeau cookies · lingots dans la calculatrice (au tarif 24 carats) · bouton « Estimer mon or » plus visible · calculatrice « Estimer mon or » (tarifs Gold Nord) + menu latéral · demandes → Google Sheets · 15 agences · Metatrend (formulaire réorganisé : 1 = nom, e-mail, téléphone · 2 = adresse, CP + ville ; agences sans statut ouvert/fermé)
   À coller dans WordPress : bloc « HTML personnalisé » (ou widget HTML Elementor)
   sur une page vide (ex. goldnord.fr/bfmtv). Aucun fichier externe, aucune librairie.
   Tout est isolé : identifiant #gn84 et classes gn84-* (ne touche pas au thème).
@@ -214,6 +214,9 @@ font-family:"Montserrat","Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Ari
 #gn84 .gn84-flinks button{background:none;border:0;padding:0;color:#efe7d8;font:inherit;cursor:pointer;text-align:left;text-decoration:underline}
 #gn84 .gn84-frgpd{font-size:12.5px;color:#a79f91}
 #gn84 .gn84-fbar{margin-top:32px;padding:16px 0 calc(16px + env(safe-area-inset-bottom));border-top:1px solid rgba(212,175,55,.18);font-size:12px;color:#8f877a;text-align:center}
+#gn84 .gn84-credit{display:block;margin-top:6px;color:#a79f91}
+#gn84 .gn84-credit a{color:var(--gn84-goldlt);font-weight:700;text-decoration:none}
+#gn84 .gn84-credit a:hover{text-decoration:underline}
 #gn84 .gn84-rgpd-note{font-size:11.5px;color:#8b8680;margin:-4px 0 12px;line-height:1.45}
 #gn84 .gn84-rgpd-note a{text-decoration:underline}
 /* ---------- COOKIES ---------- */
@@ -459,6 +462,7 @@ var GN84_CONFIG = {
   /* Bandeau cookies : "auto" = affiché seulement si le site n'a pas déjà son propre outil de consentement
      (Complianz, CookieYes, Axeptio, Cookiebot, tarteaucitron, OneTrust…) ; true = toujours ; false = jamais */
   cookieBanner: "auto",
+  credit: { name: "Meta trend LLC", url: "https://metatrendllc.com/" },   /* signature du concepteur en bas de page ; null pour la masquer */
   kitFallbackUrl: "https://goldnord.fr/accueil/#demandekit",
   agencyCount: null,               /* null = compté automatiquement depuis la liste ci-dessous */
   popupDelayMs: 1200,
@@ -652,7 +656,7 @@ function footHtml(){var Y=new Date().getFullYear(),co=C.company||{},ok=I.check.r
 '</ul></div>'+
 '<div><h3>Informations</h3><ul class="gn84-flinks"><li><button type="button" data-gn84="doc" data-gn84-doc="plan">Plan du site</button></li><li><button type="button" data-gn84="doc" data-gn84-doc="loi">Vendre son or : la loi</button></li><li><button type="button" data-gn84="doc" data-gn84-doc="fisc">Fiscalité de l’or</button></li><li><button type="button" data-gn84="doc" data-gn84-doc="lcbft">Lutte anti-blanchiment (LCB-FT)</button></li><li><button type="button" data-gn84="doc" data-gn84-doc="rgpd">Vos données (RGPD)</button></li><li><a href="'+esc(C.legalUrl)+'" target="_blank" rel="noopener">Mentions légales</a></li><li><button type="button" data-gn84="cookies">Gérer mes cookies</button></li></ul>'+
 '<p class="gn84-frgpd" style="margin-top:14px">Données personnelles (RGPD) : Gold Nord traite vos informations pour l’envoi du kit et le suivi de votre demande. Vous pouvez y accéder, les corriger, les faire effacer ou vous opposer à leur traitement en écrivant à <a href="mailto:'+esc(C.rgpdEmail)+'">'+esc(C.rgpdEmail)+'</a>, et saisir la CNIL (cnil.fr).</p></div>'+
-'</div></div><div class="gn84-fbar"><div class="gn84-wrap">© '+Y+' '+esc(co.name||"Gold Nord")+(co.form?' · '+esc(co.form):'')+(co.address?' · '+esc(co.address):'')+(co.rcs?' · '+esc(co.rcs):'')+' · Tous droits réservés.</div></div></footer>'}
+'</div></div><div class="gn84-fbar"><div class="gn84-wrap">© '+Y+' '+esc(co.name||"Gold Nord")+(co.form?' · '+esc(co.form):'')+(co.address?' · '+esc(co.address):'')+(co.rcs?' · '+esc(co.rcs):'')+' · Tous droits réservés.'+(C.credit?'<span class="gn84-credit">Conception et réalisation : <a href="'+esc(C.credit.url)+'" target="_blank" rel="noopener">'+esc(C.credit.name)+'</a></span>':'')+'</div></div></footer>'}
 function cookieHtml(){return '<div class="gn84-ck" role="dialog" aria-live="polite" aria-labelledby="gn84-ckt" hidden><h3 id="gn84-ckt">🍪 Vos cookies, votre choix</h3>'+
 '<p>Nous utilisons des cookies de mesure d’audience et publicitaires (Google, Meta) pour comprendre nos visites et vous montrer des offres utiles. Rien n’est déposé sans votre accord. <a href="'+esc(C.cookiesUrl)+'" target="_blank" rel="noopener">En savoir plus</a></p>'+
 '<div class="gn84-ckopts" hidden><label class="gn84-ckopt"><span><b>Nécessaires</b><small>Fonctionnement de la page et du formulaire</small></span><span class="gn84-sw"><input type="checkbox" checked disabled><i></i></span></label>'+
